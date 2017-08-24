@@ -48,18 +48,36 @@ export default class App extends Component {
     }
   }
 
+  statusbarHeight = () => {
+    if(this.state.visible) {
+      return 20
+    }
+
+    return 0
+  }
+
   render() {
     return (
-      <Navigator
-        initialRoute={{ name: 'Home', title: 'Home'}}
-        renderScene={this.RenderScene}
-        navigationBar={
-          <Navigator.NavigationBar
-            routeMapper = {NavigationBarRouteMapper}
-            style={styles.navBar}
-          />
-        }
-      />  
+      <View style={styles.container}>
+        <StatusBarAlert
+          visible={this.state.visible}
+          message="ON"
+          backgroundColor="#3CC29E"
+          color="white"
+          pulse="background"
+          statusbarHeight={this.statusbarHeight()}
+        />
+        <Navigator
+          initialRoute={{ name: 'Home', title: 'Home'}}
+          renderScene={this.RenderScene}
+          navigationBar={
+            <Navigator.NavigationBar
+              routeMapper = {NavigationBarRouteMapper}
+              style={styles.navBar}
+            />
+          }
+        />  
+      </View>
     );
   }
 }
@@ -67,9 +85,9 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    // backgroundColor: '#F5FCFF',
   },
   welcome: {
     fontSize: 20,
