@@ -14,19 +14,17 @@ import Home from './components/Home'
 import RenderScene from './components/Navigator/renderScene'
 import { NavigationBarRouteMapper } from './components/Navigator/navigationbarRouteMapper'
 
+const STATUSBAR_ALERT_HEIGHT = 20
+
 export default class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
       visible: false
     }
-
-    console.log('constructor > this.state : ', this.state)
-    
   }
 
   onPressButton = () => {
-    console.log('onPressButton')
     let currentVisible = this.state.visible
 
     this.setState({
@@ -35,7 +33,6 @@ export default class App extends Component {
   }
 
   RenderScene = (route, navigator) => {
-    console.log('RenderScene > this.state : ', this.state)
     switch(route.name){
       case 'Home':
         return(
@@ -50,7 +47,7 @@ export default class App extends Component {
 
   statusbarHeight = () => {
     if(this.state.visible) {
-      return 20
+      return STATUSBAR_ALERT_HEIGHT
     }
 
     return 0
