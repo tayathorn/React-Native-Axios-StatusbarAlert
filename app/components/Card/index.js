@@ -18,7 +18,7 @@ export default class Card extends Component {
           {this.props.titleText}
         </Text>
         <View style={styles.imageWrapper}>
-          <Image source={{uri:this.props.image}}/>
+          <Image source={{uri:this.props.image}} style={{width:200, height:150,}}/>
         </View>
       </View>
     )
@@ -30,10 +30,9 @@ const styles = StyleSheet.create({
     flex:1,
     justifyContent: 'center',
     alignItems: 'center',
+    marginBottom: 15,
   },
   imageWrapper: {
-    width:200, 
-    height:150,
     backgroundColor: 'pink'
   }
 })

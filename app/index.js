@@ -15,6 +15,7 @@ import RenderScene from './components/Navigator/renderScene'
 import { NavigationBarRouteMapper } from './components/Navigator/navigationbarRouteMapper'
 
 import Cartoon from './components/Cartoon'
+import AlertFullScreen from './components/AlertFullScreen'
 
 const STATUSBAR_ALERT_HEIGHT = 20
 
@@ -34,8 +35,14 @@ export default class App extends Component {
     })
   }
 
+  onPressStatusbar = () => {
+    console.log('Onpresssss Status bar jaaaa')
+
+    // this.navigator.push({id: 'AlertFullScreen'})
+  }
+
   RenderScene = (route, navigator) => {
-    switch(route.name){
+    switch(route.id){
       case 'Home':
         return(
           <Home navigator={navigator} onPress={this.onPressButton} visible={this.state.visible}/>
@@ -44,6 +51,10 @@ export default class App extends Component {
         return(
           <Cartoon/>
         );
+      case 'AlertFullScreen':
+        return(
+          <AlertFullScreen/>
+        )
     }
   }
 
@@ -65,9 +76,12 @@ export default class App extends Component {
           color="white"
           pulse="background"
           statusbarHeight={this.statusbarHeight()}
+          onPress={this.onPressStatusbar}
         />
         <Navigator
-          initialRoute={{ name: 'Cartoon', title: 'Cartoon'}}
+          ref={(ref) => {this.navigator = ref}}
+          // initialRoute={{ name: 'Cartoon', title: 'Cartoon'}}
+          initialRoute={{ id: 'Home', title: 'Home'}}
           renderScene={this.RenderScene}
           navigationBar={
             <Navigator.NavigationBar

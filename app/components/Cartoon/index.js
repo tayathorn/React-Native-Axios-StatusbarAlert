@@ -4,7 +4,8 @@ import {
   Text,
   View,
   Button,
-  ScrollView
+  ScrollView,
+  ActivityIndicator
 } from 'react-native';
 
 import request from '../../request'
@@ -55,6 +56,22 @@ export default class Cartoon extends Component {
       )
     })
   }
+
+  renderContent = () => {
+    if(this.state.cartoonList.length > 0) {
+      return(
+        <ScrollView style={styles.wrapper}>
+          { this.renderCartoonCard() }
+        </ScrollView>
+      )
+    }
+
+    return(
+      <View style={styles.loadingWrapper}>
+        <ActivityIndicator/>
+      </View>
+    )
+  }
   
 
   render() {
@@ -71,9 +88,7 @@ export default class Cartoon extends Component {
         <View style={styles.headerWrapper}>
           <Text style={styles.headerText}>Cartoon Network</Text>
         </View>
-        <ScrollView style={styles.wrapper}>
-          { this.renderCartoonCard() }
-        </ScrollView>
+        { this.renderContent() }
       </View>
     )
   }
@@ -83,6 +98,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop:55,
+  },
+  loadingWrapper: {
+    flex:1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   headerWrapper: {
     height: 50,
@@ -95,6 +115,6 @@ const styles = StyleSheet.create({
   },
   wrapper: {
     flex:1,
-    // backgroundColor: 'red'
+    // backgroundColor: 'red',
   }
 })

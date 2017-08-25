@@ -9,6 +9,11 @@ import {
 // import StatusBarAlert from 'react-native-statusbar-alert'
 
 export default class Home extends Component {
+
+  onPressGoToGraphQL = () => {
+    this.props.navigator.push({ id: 'Cartoon', title: 'GraphQL'})
+  }
+
   render() {
     return(
       <View style={styles.container}>
@@ -22,6 +27,9 @@ export default class Home extends Component {
           <Text>
             {`visible status : ${this.props.visible}`}
           </Text>
+        </View>
+        <View style={styles.buttonWrapper}>
+          <Button title="Go to graphQL !" color="#00BCD4" onPress={this.onPressGoToGraphQL}/>
         </View>
       </View>
     )
