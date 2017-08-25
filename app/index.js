@@ -14,6 +14,8 @@ import Home from './components/Home'
 import RenderScene from './components/Navigator/renderScene'
 import { NavigationBarRouteMapper } from './components/Navigator/navigationbarRouteMapper'
 
+import Cartoon from './components/Cartoon'
+
 const STATUSBAR_ALERT_HEIGHT = 20
 
 export default class App extends Component {
@@ -38,9 +40,9 @@ export default class App extends Component {
         return(
           <Home navigator={navigator} onPress={this.onPressButton} visible={this.state.visible}/>
         );
-      case 'Twitter':
+      case 'Cartoon':
         return(
-          <TwitterScreen/>
+          <Cartoon/>
         );
     }
   }
@@ -65,7 +67,7 @@ export default class App extends Component {
           statusbarHeight={this.statusbarHeight()}
         />
         <Navigator
-          initialRoute={{ name: 'Home', title: 'Home'}}
+          initialRoute={{ name: 'Cartoon', title: 'Cartoon'}}
           renderScene={this.RenderScene}
           navigationBar={
             <Navigator.NavigationBar
