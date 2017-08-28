@@ -14,7 +14,6 @@ import Home from './components/Home'
 import RenderScene from './components/Navigator/renderScene'
 import { NavigationBarRouteMapper } from './components/Navigator/navigationbarRouteMapper'
 
-import Cartoon from './components/Cartoon'
 import Feed from './components/Feed'
 import Author from './components/Author'
 import Post from './components/Post'
@@ -41,7 +40,7 @@ export default class App extends Component {
   onPressStatusbar = () => {
     console.log('Onpresssss Status bar jaaaa')
 
-    // this.navigator.push({id: 'AlertFullScreen'})
+    this.navigator.push({id: 'AlertFullScreen'})
   }
 
   RenderScene = (route, navigator) => {
@@ -49,10 +48,6 @@ export default class App extends Component {
       case 'Home':
         return(
           <Home navigator={navigator} onPress={this.onPressButton} visible={this.state.visible}/>
-        );
-      case 'Cartoon':
-        return(
-          <Cartoon/>
         );
       case 'Feed':
         return(
@@ -95,7 +90,6 @@ export default class App extends Component {
         />
         <Navigator
           ref={(ref) => {this.navigator = ref}}
-          // initialRoute={{ name: 'Cartoon', title: 'Cartoon'}}
           initialRoute={{ id: 'Home', title: 'Home'}}
           renderScene={this.RenderScene}
           navigationBar={

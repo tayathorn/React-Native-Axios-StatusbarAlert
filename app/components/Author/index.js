@@ -44,7 +44,6 @@ export default class Author extends Component {
 
   _renderAuthorList = () => {
     return this.state.authors.map((author) => {
-      console.log('cartoon : ', author)
       return(
         <AuthorInfo key={author.id} firstname={author.firstName} lastname={author.lastName} image={author.avatar}/>
       )
@@ -70,7 +69,7 @@ const styles = StyleSheet.create({
   container: {
     flex:1,
     marginTop:55,
-    // justifyContent: 'center',
+    justifyContent: 'center',
     // alignItems: 'center',
   }
 })

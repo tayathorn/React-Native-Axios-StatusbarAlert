@@ -20,10 +20,10 @@ export default class Feed extends Component {
     return(
       <View style={styles.container}>
         <View style={styles.buttonWrapper}>
-          <Button title="See all Authors" color="#607D8B" onPress={this.onPressAuthors}/>
+          <Button title="See all Posts" color="#607D8B" onPress={this.onPressPosts}/>
         </View>
         <View style={styles.buttonWrapper}>
-          <Button title="See all Posts" color="#9E9E9E" onPress={this.onPressPosts}/>
+          <Button title="See all Authors" color="#9E9E9E" onPress={this.onPressAuthors}/>
         </View>
       </View>
     )
