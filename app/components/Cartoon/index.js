@@ -11,7 +11,8 @@ import {
 import request from '../../request'
 import Card from '../Card'
 
-const GRAPHQL_URL = 'https://jlz3vx84p.lp.gql.zone/graphql'
+// const GRAPHQL_URL = 'https://jlz3vx84p.lp.gql.zone/graphql'
+const GRAPHQL_URL = 'https://1jzxrj179.lp.gql.zone/graphql'
 
 export default class Cartoon extends Component {
 
@@ -30,14 +31,15 @@ export default class Cartoon extends Component {
   fetchCartoonList = () => {
     console.log('fetchCartoonList')
     const query = {
-      "query": "{cartoon { id name pic } }" 
+      "query": "{ posts { id title votes } }" 
     }
 
     request.post(GRAPHQL_URL, query)
     .then((response) => {
       console.log('response :: ', response)
 
-      let cartoonList = response.data.data.cartoon
+      // let cartoonList = response.data.data.cartoon
+      let cartoonList = response.data.data.posts
 
       console.log('cartoonList : ', cartoonList)
 
@@ -47,12 +49,24 @@ export default class Cartoon extends Component {
     })
   }
 
+  onPressButton = () => {
+    const query = {
+      "query": "mutation { upvotePost(postId:3) {id title votes}}"
+    }
+
+    request.post(GRAPHQL_URL, query)
+    .then((response) => {
+      console.log('response :: ', response)
+      this.fetchCartoonList()
+    })
+  }
+
   renderCartoonCard = () => {
     console.log('renderCartoonCard')
     return this.state.cartoonList.map((cartoon) => {
       console.log('cartoon : ', cartoon)
       return(
-        <Card key={cartoon.id} titleText={cartoon.name} image={cartoon.pic}/>
+        <Card key={cartoon.id} titleText={`${cartoon.title} votes:${cartoon.votes}`} image={cartoon.pic}/>
       )
     })
   }
@@ -72,6 +86,12 @@ export default class Cartoon extends Component {
       </View>
     )
   }
+
+  renderButton = () => {
+    return(
+      <Button title="Press Here !" color="#4CAF50" onPress={this.onPressButton}/>
+    )
+  }
   
 
   render() {
@@ -89,6 +109,9 @@ export default class Cartoon extends Component {
           <Text style={styles.headerText}>Cartoon Network</Text>
         </View>
         { this.renderContent() }
+        <View style={styles.headerWrapper}>
+          { this.renderButton() }
+        </View>
       </View>
     )
   }

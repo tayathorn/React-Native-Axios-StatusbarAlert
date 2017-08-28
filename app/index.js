@@ -15,6 +15,9 @@ import RenderScene from './components/Navigator/renderScene'
 import { NavigationBarRouteMapper } from './components/Navigator/navigationbarRouteMapper'
 
 import Cartoon from './components/Cartoon'
+import Feed from './components/Feed'
+import Author from './components/Author'
+import Post from './components/Post'
 import AlertFullScreen from './components/AlertFullScreen'
 
 const STATUSBAR_ALERT_HEIGHT = 20
@@ -23,7 +26,7 @@ export default class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      visible: false
+      visible: false,
     }
   }
 
@@ -50,6 +53,18 @@ export default class App extends Component {
       case 'Cartoon':
         return(
           <Cartoon/>
+        );
+      case 'Feed':
+        return(
+          <Feed navigator={navigator} />
+        );
+      case 'Author':
+        return(
+          <Author/>
+        );
+      case 'Post':
+        return(
+          <Post/>
         );
       case 'AlertFullScreen':
         return(

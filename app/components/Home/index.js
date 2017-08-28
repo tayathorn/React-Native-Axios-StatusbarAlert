@@ -11,7 +11,7 @@ import {
 export default class Home extends Component {
 
   onPressGoToGraphQL = () => {
-    this.props.navigator.push({ id: 'Cartoon', title: 'GraphQL'})
+    this.props.navigator.push({ id: 'Feed', title: 'Authors  & Posts'})
   }
 
   render() {

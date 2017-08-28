@@ -4,12 +4,14 @@ config = {
   'Content-Type': 'application/json',
 }
 
+const baseUrl = 'https://47r4l0m89.lp.gql.zone/graphql'
+
 export default {
-  get: (url, params={}) => {
-    return axios.get(url, Object.assign({ params }, config))
+  get: (params={}) => {
+    return axios.get(baseUrl, Object.assign({ params }, config))
   },
 
-  post: (url, data) => {
-    return axios.post(url, data, config)
+  post: (data) => {
+    return axios.post(baseUrl, data, config)
   }
 }
